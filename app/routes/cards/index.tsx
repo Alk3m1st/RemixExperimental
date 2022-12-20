@@ -1,35 +1,31 @@
+import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import Airtable from "airtable";
+import { getCards } from "~/models/card.server";
 
-//Airtable.configure({ apiKey: "" }); // DO NOT COMMIT!
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  process.env.AIRTABLE_BASE_ID ?? ""
-);
+type Card = {
+  fields: { question: string; section: string; answer: string };
+  id: string;
+};
 
-export const loader = async () => {
-  return base("Imported table")
-    .select({
-      maxRecords: 5,
-      view: "Grid view",
-    })
-    .all();
+export const loader: LoaderFunction = async () => {
+  return getCards();
 };
 
 export default function Cards() {
-  const cards: [
-    {
-      fields: { question: string; section: string; answer: string };
-      id: string;
-    }
-  ] = useLoaderData();
-  //console.log(cards);
+  const cards: Card[] = useLoaderData();
 
   return (
-    <main>
+    <main className="container mx-auto">
       <h1>Cards</h1>
-      <ul className="card">
+      <ul className="flex flex-wrap">
         {cards.map((card) => (
-          <li key={card.id}>{card.fields.question}</li>
+          <li
+            key={card.id}
+            className="basis-1/3 font-sans text-lg rounded-md border-2 border-gray-400 shadow-lg p-4 m-4 hover:bg-gray-200"
+          >
+            <h2>{card.fields.question}</h2>
+            <p>{card.fields.answer}</p>
+          </li>
         ))}
       </ul>
     </main>
