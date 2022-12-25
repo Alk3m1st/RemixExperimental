@@ -15,8 +15,8 @@ export default function Cards() {
   const cards: Card[] = useLoaderData();
 
   return (
-    <main className="container mx-auto">
-      <h1>Cards</h1>
+    <>
+      <h1>Cards (Server-Side)</h1>
       <ul className="flex flex-wrap">
         {cards.map((card) => (
           <li
@@ -28,6 +28,6 @@ export default function Cards() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 }
