@@ -1,4 +1,10 @@
-# Welcome to Remix!
+# Remix Experimental
+
+This repo is just a space for me to experiment with and learn Remix.
+
+Main goals are to compare how Remix works with client-side and server-side components. How it works compared to other frameworks / libraries such as Next JS. Look into how easy it is to deploy and run on AWS (mostly it's SSR that could get interesting). Finally explore how it handles being used in a micro frontend architecture.
+
+The basic premise of this app is to grab some data from airtable and display. In this case as a Flash Card type of app.
 
 - [Remix Docs](https://remix.run/docs)
 
