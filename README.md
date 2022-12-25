@@ -51,3 +51,9 @@ rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
 ```
+
+## Additional config
+
+### Tailwind
+
+Follow the remix setup guidelines https://remix.run/docs/en/v1/guides/styling#tailwind-css
